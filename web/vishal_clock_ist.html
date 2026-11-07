@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Live Clock (+5:30 IST) | Vishal Rathaur</title>
+<style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Outfit:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap');
+    :root {
+      --bg-mesh: radial-gradient(at 15% 15%, rgba(56, 189, 248, 0.15) 0px, transparent 50%),
+                 radial-gradient(at 85% 20%, rgba(244, 114, 182, 0.15) 0px, transparent 50%),
+                 linear-gradient(160deg, #0f172a 0%, #1e1b4b 55%, #0f172a 100%);
+      --glass: rgba(255, 255, 255, 0.10);
+      --border: rgba(255, 255, 255, 0.20);
+      --text: #f8fafc;
+      --muted: #cbd5e1;
+      --cyan: #38bdf8;
+      --pink: #f472b6;
+      --violet: #a78bfa;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      background: var(--bg-mesh);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .glass-shell {
+      width: 100%;
+      max-width: 380px;
+      padding: 24px 22px;
+      border-radius: 28px;
+      background: var(--glass);
+      backdrop-filter: blur(16px) saturate(160%);
+      -webkit-backdrop-filter: blur(16px) saturate(160%);
+      border: 1px solid var(--border);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.28);
+      margin: auto;
+    }
+    .brand-hdr {
+      text-align: center;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .brand-hdr h1 {
+      font-family: 'Berkshire Swash', cursive;
+      font-weight: 400;
+      font-size: 1.65rem;
+    }
+    .brand-hdr p {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--cyan);
+      margin-top: 2px;
+    }
+
+.dial { width: 180px; height: 180px; border-radius: 50%; border: 3px solid var(--cyan); margin: 10px auto 24px; position: relative; background: rgba(255,255,255,0.05); }
+.hand { position: absolute; bottom: 50%; left: 50%; transform-origin: bottom center; border-radius: 99px; }
+.dot { position: absolute; width: 10px; height: 10px; background: var(--pink); border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%,-50%); }
+.dig { font-family: 'Outfit', sans-serif; font-size: 2.2rem; font-weight: 700; text-align: center; color: var(--cyan); }
+.dt { text-align: center; font-size: 0.88rem; color: var(--muted); margin-top: 6px; }
+</style>
+</head>
+<body>
+  <div class="glass-shell">
+    <div class="brand-hdr">
+      <h1>Vishal Rathaur</h1>
+      <p>Techie Doctor • Live Clock (+5:30 IST)</p>
+    </div>
+    <div class="dial">
+      <div class="hand" id="hr" style="width:4.5px;height:48px;background:#fff;"></div>
+      <div class="hand" id="mn" style="width:3.2px;height:65px;background:var(--cyan);"></div>
+      <div class="hand" id="sc" style="width:2px;height:75px;background:var(--pink);"></div>
+      <div class="dot"></div>
+    </div>
+    <div class="dig" id="dig">00:00:00</div>
+    <div class="dt" id="dt">UTC +5:30 IST</div>
+  </div>
+<script>
+function tick() {
+  const now = new Date();
+  const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+  const ist = new Date(utc + (5.5 * 3600000));
+  const h = ist.getHours(), m = ist.getMinutes(), s = ist.getSeconds();
+  document.getElementById('hr').style.transform = 'translateX(-50%) rotate(' + (((h%12)*30)+(m*0.5)) + 'deg)';
+  document.getElementById('mn').style.transform = 'translateX(-50%) rotate(' + ((m*6)+(s*0.1)) + 'deg)';
+  document.getElementById('sc').style.transform = 'translateX(-50%) rotate(' + (s*6) + 'deg)';
+  const pad = n => String(n).padStart(2,'0');
+  document.getElementById('dig').textContent = pad(h%12||12) + ':' + pad(m) + ':' + pad(s) + ' ' + (h>=12?'PM':'AM');
+  document.getElementById('dt').textContent = ist.toLocaleDateString('en-IN', { weekday:'long', day:'numeric', month:'short', year:'numeric' }) + ' (+5:30 IST)';
+}
+setInterval(tick, 1000); tick();
+</script>
+</body>
+</html>

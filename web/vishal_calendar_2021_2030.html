@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calendar (2021 - 2030) | Vishal Rathaur</title>
+<style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Outfit:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap');
+    :root {
+      --bg-mesh: radial-gradient(at 15% 15%, rgba(56, 189, 248, 0.15) 0px, transparent 50%),
+                 radial-gradient(at 85% 20%, rgba(244, 114, 182, 0.15) 0px, transparent 50%),
+                 linear-gradient(160deg, #0f172a 0%, #1e1b4b 55%, #0f172a 100%);
+      --glass: rgba(255, 255, 255, 0.10);
+      --border: rgba(255, 255, 255, 0.20);
+      --text: #f8fafc;
+      --muted: #cbd5e1;
+      --cyan: #38bdf8;
+      --pink: #f472b6;
+      --violet: #a78bfa;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      background: var(--bg-mesh);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .glass-shell {
+      width: 100%;
+      max-width: 380px;
+      padding: 24px 22px;
+      border-radius: 28px;
+      background: var(--glass);
+      backdrop-filter: blur(16px) saturate(160%);
+      -webkit-backdrop-filter: blur(16px) saturate(160%);
+      border: 1px solid var(--border);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.28);
+      margin: auto;
+    }
+    .brand-hdr {
+      text-align: center;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .brand-hdr h1 {
+      font-family: 'Berkshire Swash', cursive;
+      font-weight: 400;
+      font-size: 1.65rem;
+    }
+    .brand-hdr p {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--cyan);
+      margin-top: 2px;
+    }
+
+.bar { display: flex; justify-content: space-between; align-items: center; gap: 6px; margin-bottom: 14px; }
+select, .nav-b { padding: 8px 11px; border-radius: 12px; border: 1px solid var(--border); background: var(--glass); color: #fff; font-family: 'Outfit', sans-serif; font-weight: 600; cursor: pointer; outline:none; }
+select option { background: #1e293b; color: #fff; }
+.grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; text-align: center; }
+.dh { font-size: 0.74rem; font-weight: 700; color: var(--cyan); padding: 4px 0; }
+.cl { height: 36px; border-radius: 10px; display: grid; place-items: center; font-size: 0.86rem; font-weight: 600; background: rgba(255,255,255,0.06); }
+.cl.td { background: linear-gradient(135deg, var(--pink), var(--violet)); border: 1px solid #fff; }
+</style>
+</head>
+<body>
+  <div class="glass-shell">
+    <div class="brand-hdr">
+      <h1>Vishal Rathaur</h1>
+      <p>Techie Doctor • Calendar (2021 – 2030)</p>
+    </div>
+    <div class="bar">
+      <button class="nav-b" onclick="step(-1)">&lt;</button>
+      <div style="display:flex; gap:6px;">
+        <select id="ms" onchange="draw()"></select>
+        <select id="ys" onchange="draw()"></select>
+      </div>
+      <button class="nav-b" onclick="step(1)">&gt;</button>
+    </div>
+    <div class="grid" id="gd"></div>
+  </div>
+<script>
+const M=['January','February','March','April','May','June','July','August','September','October','November','December'];
+const D=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+const ms=document.getElementById('ms'), ys=document.getElementById('ys');
+ms.innerHTML=M.map((m,i)=>'<option value="'+i+'">'+m+'</option>').join('');
+for(let y=2021;y<=2030;y++) ys.innerHTML+='<option value="'+y+'">'+y+'</option>';
+const now=new Date();
+ms.value=now.getMonth();
+ys.value=Math.min(2030,Math.max(2021,now.getFullYear()));
+function step(d){
+  let m=parseInt(ms.value)+d, y=parseInt(ys.value);
+  if(m<0){m=11;y--;} if(m>11){m=0;y++;}
+  if(y<2021){y=2021;m=0;} if(y>2030){y=2030;m=11;}
+  ms.value=m; ys.value=y; draw();
+}
+function draw(){
+  const m=parseInt(ms.value), y=parseInt(ys.value);
+  let h=D.map(d=>'<div class="dh">'+d+'</div>').join('');
+  const fd=new Date(y,m,1).getDay(), dim=new Date(y,m+1,0).getDate();
+  for(let i=0;i<fd;i++) h+='<div></div>';
+  for(let d=1;d<=dim;d++){
+    const isT=(now.getFullYear()===y&&now.getMonth()===m&&now.getDate()===d);
+    h+='<div class="cl'+(isT?' td':'')+'">'+d+'</div>';
+  }
+  document.getElementById('gd').innerHTML=h;
+}
+draw();
+</script>
+</body>
+</html>
