@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <!-- Version 15 (Distinct Web Files Implementation) -->
+  <title>Vishal Rathaur | Techie Doctor</title>
+
+  <!-- Google Fonts: Upright Straight Cursive + Clean iOS-Style Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Delius+Swash+Caps&family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    /* ==========================================================================
+       BUILD VERSION 15 — ULTRA-SMOOTH iOS FEATHERLIGHT GLASS THEME
+       Author: Vishal Rathaur (Techie Doctor)
+       ========================================================================== */
+    :root {
+      /* iOS Dark Translucent Glass Palette */
+      --bg-base: #0f172a;
+      --bg-mesh:
+        radial-gradient(at 15% 15%, rgba(56, 189, 248, 0.22) 0px, transparent 50%),
+        radial-gradient(at 85% 20%, rgba(244, 114, 182, 0.20) 0px, transparent 50%),
+        radial-gradient(at 50% 85%, rgba(167, 139, 250, 0.20) 0px, transparent 55%),
+        linear-gradient(160deg, #0f172a 0%, #1e1b4b 55%, #0f172a 100%);
+
+      /* Featherlight iOS Glass Tokens */
+      --ios-glass: rgba(255, 255, 255, 0.08);
+      --ios-glass-hover: rgba(255, 255, 255, 0.12);
+      --ios-glass-strong: rgba(30, 41, 59, 0.68);
+      --ios-border: rgba(255, 255, 255, 0.18);
+      --ios-highlight: rgba(255, 255, 255, 0.28);
+      --ios-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.22);
+
+      /* iOS Pill Dock */
+      --dock-bg: rgba(255, 255, 255, 0.10);
+      --dock-active: rgba(255, 255, 255, 0.18);
+
+      --text-main: #f8fafc;
+      --text-muted: #cbd5e1;
+      --accent-pink: #f472b6;
+      --accent-violet: #a78bfa;
+      --accent-cyan: #38bdf8;
+      --accent-mint: #34d399;
+      --accent-amber: #fbbf24;
+
+      --ios-blur: 14px;
+      --card-radius: 24px;
+      --pill-radius: 999px;
+
+      /* Upright Straight Cursive + iOS Clean UI Fonts */
+      --font-cursive-straight: 'Berkshire Swash', cursive;
+      --font-cursive-label: 'Delius Swash Caps', cursive;
+      --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    /* iOS Daylight Glass Mode */
+    body.light-mode {
+      --bg-base: #f1f5f9;
+      --bg-mesh:
+        radial-gradient(at 15% 15%, rgba(56, 189, 248, 0.25) 0px, transparent 50%),
+        radial-gradient(at 85% 20%, rgba(244, 114, 182, 0.22) 0px, transparent 50%),
+        radial-gradient(at 50% 85%, rgba(167, 139, 250, 0.22) 0px, transparent 55%),
+        linear-gradient(160deg, #f8fafc 0%, #eef2ff 55%, #f1f5f9 100%);
+
+      --ios-glass: rgba(255, 255, 255, 0.58);
+      --ios-glass-hover: rgba(255, 255, 255, 0.75);
+      --ios-glass-strong: rgba(255, 255, 255, 0.85);
+      --ios-border: rgba(255, 255, 255, 0.85);
+      --ios-highlight: rgba(255, 255, 255, 1);
+      --ios-shadow: 0 8px 24px -4px rgba(100, 116, 139, 0.12);
+
+      --dock-bg: rgba(255, 255, 255, 0.78);
+      --dock-active: rgba(226, 232, 240, 0.85);
+
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --accent-cyan: #0284c7;
+      --accent-violet: #7c3aed;
+      --accent-pink: #db2777;
+      --accent-mint: #059669;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg-base);
+      background-image: var(--bg-mesh);
+      background-attachment: fixed;
+      color: var(--text-main);
+      min-height: 100vh;
+      overflow-x: hidden;
+      padding-bottom: 105px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* MAIN CONTAINER */
+    .app-shell { position: relative; z-index: 2; max-width: 920px; margin: 0 auto; padding: 14px 16px 36px; }
+
+    /* TOP HEADER */
+    .top-header { display: flex; align-items: center; justify-content: space-between; padding: 6px 2px 12px; background: transparent; }
+
+    /* Left Menu Button */
+    .bento-menu-btn { width: 46px; height: 46px; border-radius: 15px; border: 1px solid var(--ios-border); background: var(--ios-glass); backdrop-filter: blur(var(--ios-blur)) saturate(160%); -webkit-backdrop-filter: blur(var(--ios-blur)) saturate(160%); box-shadow: var(--ios-shadow); cursor: pointer; display: grid; place-items: center; color: var(--text-main); transition: transform 0.2s, background-color 0.2s; will-change: transform; }
+    .bento-menu-btn:active { transform: scale(0.92); }
+    .bento-grid-icon { width: 20px; height: 20px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 4px; transition: transform 0.28s; }
+    .bento-dot { width: 8px; height: 8px; border-radius: 3px; background: var(--text-main); }
+    .bento-dot.sparkle-dot { background: linear-gradient(135deg, var(--accent-pink), var(--accent-amber)); transform: rotate(45deg); border-radius: 2.5px; }
+    .bento-dot.cyan-dot { background: linear-gradient(135deg, var(--accent-cyan), var(--accent-violet)); }
+    .bento-menu-btn.active .bento-grid-icon { transform: rotate(90deg); }
+
+    /* Center Brand */
+    .brand-center { display: flex; flex-direction: column; align-items: center; text-align: center; user-select: none; }
+    .brand-name { font-family: var(--font-cursive-straight); font-style: normal; font-weight: 400; font-size: clamp(1.55rem, 4.4vw, 2.05rem); line-height: 1.1; letter-spacing: 0.3px; color: var(--text-main); }
+    .brand-subtitle { font-family: var(--font-cursive-label); font-style: normal; font-size: 0.84rem; font-weight: 600; color: var(--accent-cyan); margin-top: 2px; display: inline-flex; align-items: center; gap: 6px; }
+    .pulse-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent-mint); }
+
+    /* Right Profile Button */
+    .profile-trigger-btn { position: relative; width: 46px; height: 46px; border-radius: 15px; border: 1px solid var(--ios-border); background: var(--ios-glass); backdrop-filter: blur(var(--ios-blur)) saturate(160%); -webkit-backdrop-filter: blur(var(--ios-blur)) saturate(160%); box-shadow: var(--ios-shadow); cursor: pointer; display: grid; place-items: center; transition: transform 0.2s; will-change: transform; }
+    .profile-trigger-btn:active { transform: scale(0.92); }
+    .status-online-ring { position: absolute; bottom: -2px; right: -2px; width: 11px; height: 11px; border-radius: 50%; background: var(--accent-mint); border: 2px solid var(--bg-base); }
+
+    /* SLIDE-OUT LEFT DRAWER & RIGHT PROFILE POPOVER */
+    .drawer-backdrop { position: fixed; inset: 0; background: rgba(8, 12, 24, 0.42); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); z-index: 50; opacity: 0; pointer-events: none; transition: opacity 0.22s; }
+    .drawer-backdrop.show { opacity: 1; pointer-events: auto; }
+
+    .side-drawer { position: fixed; top: 14px; left: 14px; bottom: 14px; width: min(295px, calc(100vw - 28px)); border-radius: 26px; background: var(--ios-glass-strong); backdrop-filter: blur(18px) saturate(170%); -webkit-backdrop-filter: blur(18px) saturate(170%); border: 1px solid var(--ios-border); box-shadow: var(--ios-shadow); z-index: 60; padding: 20px 18px; display: flex; flex-direction: column; justify-content: space-between; transform: translate3d(-110%, 0, 0); transition: transform 0.26s; will-change: transform; }
+    .side-drawer.open { transform: translate3d(0, 0, 0); }
+    .drawer-header { display: flex; align-items: center; justify-content: space-between; padding-bottom: 14px; border-bottom: 1px solid var(--ios-border); }
+    .drawer-user-mini { display: flex; align-items: center; gap: 10px; }
+    .mini-3d-badge { width: 42px; height: 42px; border-radius: 14px; background: linear-gradient(135deg, var(--accent-violet), var(--accent-pink)); display: grid; place-items: center; font-family: var(--font-cursive-straight); font-size: 1.15rem; color: #fff; }
+    .drawer-close-btn { width: 34px; height: 34px; border-radius: 10px; border: 1px solid var(--ios-border); background: var(--ios-glass); color: var(--text-main); cursor: pointer; display: grid; place-items: center; }
+    .drawer-links { display: flex; flex-direction: column; gap: 8px; margin: 16px 0; }
+    .drawer-item { display: flex; align-items: center; gap: 12px; padding: 11px 14px; border-radius: 15px; border: 1px solid transparent; background: transparent; color: var(--text-main); font-family: var(--font-heading); font-weight: 600; font-size: 0.94rem; cursor: pointer; transition: background-color 0.18s, transform 0.18s; }
+    .drawer-item:hover, .drawer-item.active-item { background: var(--ios-glass-hover); border-color: var(--ios-border); transform: translateX(4px); }
+    .drawer-icon-box { width: 32px; height: 32px; border-radius: 10px; display: grid; place-items: center; background: var(--ios-glass); color: var(--accent-cyan); }
+    .drawer-footer { padding: 12px; border-radius: 16px; background: var(--ios-glass); border: 1px solid var(--ios-border); text-align: center; font-family: var(--font-cursive-label); font-size: 0.82rem; color: var(--text-muted); }
+
+    /* Profile Popover */
+    .profile-popover { position: fixed; top: 70px; right: max(16px, calc((100vw - 920px) / 2 + 16px)); width: min(310px, calc(100vw - 32px)); border-radius: 24px; background: var(--ios-glass-strong); backdrop-filter: blur(18px) saturate(170%); -webkit-backdrop-filter: blur(18px) saturate(170%); border: 1px solid var(--ios-border); box-shadow: var(--ios-shadow); padding: 20px; z-index: 55; transform: translate3d(0, -10px, 0) scale(0.95); transform-origin: top right; opacity: 0; pointer-events: none; transition: transform 0.22s, opacity 0.2s; }
+    .profile-popover.open { transform: translate3d(0, 0, 0) scale(1); opacity: 1; pointer-events: auto; }
+    .profile-pop-header { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6px; }
+    .avatar-ios-large { width: 68px; height: 68px; border-radius: 22px; background: linear-gradient(135deg, var(--accent-pink), var(--accent-violet), var(--accent-cyan)); padding: 2.5px; }
+    .avatar-ios-inner { width: 100%; height: 100%; border-radius: 19.5px; background: var(--bg-base); display: grid; place-items: center; }
+    .role-badge-ios { display: inline-flex; align-items: center; gap: 5px; padding: 4px 12px; border-radius: var(--pill-radius); background: var(--ios-glass-hover); border: 1px solid var(--ios-border); color: var(--accent-cyan); font-family: var(--font-heading); font-size: 0.76rem; font-weight: 600; }
+    .profile-stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 14px 0; }
+    .stat-mini-box { padding: 8px 4px; border-radius: 14px; background: var(--ios-glass); border: 1px solid var(--ios-border); text-align: center; }
+    .stat-mini-val { font-family: var(--font-heading); font-size: 0.95rem; font-weight: 700; color: var(--accent-cyan); }
+    .stat-mini-lbl { font-size: 0.66rem; color: var(--text-muted); }
+    .theme-switch-btn { width: 100%; padding: 10px; border-radius: 14px; border: 1px solid var(--ios-border); background: var(--ios-glass-hover); color: var(--text-main); font-family: var(--font-heading); font-weight: 600; font-size: 0.86rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; }
+
+    /* LIGHTWEIGHT iOS GLASS HERO CARD */
+    .hero-ios-card { margin-top: 8px; padding: 24px 22px; border-radius: var(--card-radius); background: var(--ios-glass); backdrop-filter: blur(var(--ios-blur)) saturate(160%); -webkit-backdrop-filter: blur(var(--ios-blur)) saturate(160%); border: 1px solid var(--ios-border); box-shadow: var(--ios-shadow); display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+    @media (max-width: 640px) { .hero-ios-card { flex-direction: column; text-align: center; padding: 20px 18px; } }
+    .hero-tag-pill { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: var(--pill-radius); background: var(--ios-glass-hover); border: 1px solid var(--ios-border); font-size: 0.72rem; font-weight: 700; color: var(--accent-cyan); margin-bottom: 10px; letter-spacing: 0.4px; }
+    .hero-title { font-family: var(--font-heading); font-size: clamp(1.55rem, 3.8vw, 2.15rem); font-weight: 700; line-height: 1.2; margin-bottom: 6px; }
+    .cursive-inline { font-family: var(--font-cursive-straight); font-weight: 400; background: linear-gradient(135deg, var(--accent-pink), var(--accent-violet), var(--accent-cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero-desc { font-size: 0.9rem; line-height: 1.55; color: var(--text-muted); margin-bottom: 16px; max-width: 540px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+    @media (max-width: 640px) { .hero-actions { justify-content: center; } }
+    .btn-ios { padding: 10px 18px; border-radius: 14px; font-family: var(--font-heading); font-size: 0.88rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 7px; transition: transform 0.18s, background-color 0.18s; }
+    .btn-ios:active { transform: scale(0.95); }
+    .btn-ios-primary { border: 1px solid rgba(255, 255, 255, 0.28); background: linear-gradient(135deg, var(--accent-pink), var(--accent-violet)); color: #fff; }
+    .btn-ios-glass { border: 1px solid var(--ios-border); background: var(--ios-glass-hover); color: var(--text-main); }
+    .hero-badge-box { flex-shrink: 0; width: 125px; height: 125px; border-radius: 28px; background: var(--ios-glass-hover); border: 1px solid var(--ios-border); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; cursor: pointer; transition: transform 0.2s; }
+    .hero-badge-box:active { transform: scale(0.94); }
+    .hero-orb-icon { width: 58px; height: 58px; border-radius: 18px; background: linear-gradient(135deg, var(--accent-cyan), var(--accent-violet)); display: grid; place-items: center; color: #fff; }
+
+    /* DYNAMIC TAB VIEWS */
+    .tab-section { display: none; margin-top: 22px; animation: fadeUpSmooth 0.24s cubic-bezier(0.22, 1, 0.36, 1); }
+    .tab-section.active-view { display: block; }
+    @keyframes fadeUpSmooth { 0% { opacity: 0; transform: translate3d(0, 10px, 0); } 100% { opacity: 1; transform: translate3d(0, 0, 0); } }
+    .section-header-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; padding: 0 2px; }
+    .section-title { font-family: var(--font-cursive-straight); font-size: 1.38rem; font-weight: 400; display: flex; align-items: center; gap: 8px; }
+    .section-pill { font-family: var(--font-heading); font-size: 0.72rem; font-weight: 600; padding: 4px 11px; border-radius: var(--pill-radius); background: var(--ios-glass); border: 1px solid var(--ios-border); color: var(--accent-cyan); }
+    .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+    .web-apps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+
+    .card-ios { padding: 20px; border-radius: var(--card-radius); background: var(--ios-glass); backdrop-filter: blur(var(--ios-blur)) saturate(160%); -webkit-backdrop-filter: blur(var(--ios-blur)) saturate(160%); border: 1px solid var(--ios-border); box-shadow: var(--ios-shadow); display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.2s, background-color 0.2s; }
+    .card-ios:hover { transform: translateY(-3px); background: var(--ios-glass-hover); }
+    .card-top-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+    .card-icon-ios { width: 46px; height: 46px; border-radius: 14px; display: grid; place-items: center; color: #fff; }
+
+    .grad-pink { background: linear-gradient(135deg, #f472b6, #fb7185); }
+    .grad-violet { background: linear-gradient(135deg, #a78bfa, #6366f1); }
+    .grad-cyan { background: linear-gradient(135deg, #38bdf8, #3b82f6); }
+    .grad-mint { background: linear-gradient(135deg, #34d399, #10b981); }
+
+    .file-badge { font-family: var(--font-heading); font-size: 0.72rem; font-weight: 600; padding: 3px 9px; border-radius: 8px; background: var(--ios-glass-hover); border: 1px solid var(--ios-border); color: var(--text-muted); }
+    .card-title { font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; margin-bottom: 5px; }
+    .card-text { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 14px; }
+
+    .mini-widget-preview { margin-bottom: 14px; padding: 12px; border-radius: 16px; background: rgba(0, 0, 0, 0.16); border: 1px solid var(--ios-border); display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+    body.light-mode .mini-widget-preview { background: rgba(255, 255, 255, 0.55); }
+
+    .mini-analog-face { width: 46px; height: 46px; border-radius: 50%; border: 2px solid var(--accent-cyan); position: relative; background: rgba(255, 255, 255, 0.06); flex-shrink: 0; }
+    .mini-hand { position: absolute; bottom: 50%; left: 50%; transform-origin: bottom center; border-radius: 99px; }
+    .mini-hr { width: 2.2px; height: 12px; background: var(--text-main); }
+    .mini-min { width: 1.8px; height: 16px; background: var(--accent-cyan); }
+    .mini-sec { width: 1.2px; height: 18px; background: var(--accent-pink); }
+    .mini-center-dot { position: absolute; width: 5px; height: 5px; background: var(--accent-pink); border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+
+    .card-btn-group { display: grid; grid-template-columns: 1fr 1.15fr; gap: 8px; margin-top: auto; }
+    .btn-card-action { padding: 9px 12px; border-radius: 12px; font-family: var(--font-heading); font-size: 0.8rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 6px; border: 1px solid var(--ios-border); transition: transform 0.16s, background-color 0.16s; }
+    .btn-card-action:active { transform: scale(0.95); }
+    .btn-open-app { background: var(--ios-glass-hover); color: var(--text-main); }
+    .btn-download-html { background: linear-gradient(135deg, rgba(56, 189, 248, 0.25), rgba(167, 139, 250, 0.28)); color: var(--text-main); border-color: var(--ios-highlight); }
+    body.light-mode .btn-download-html { background: linear-gradient(135deg, #0284c7, #6366f1); color: #ffffff; }
+
+    /* INTERACTIVE IFRAME MODAL */
+    .app-modal-backdrop { position: fixed; inset: 0; background: rgba(8, 12, 24, 0.55); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); z-index: 90; display: none; align-items: center; justify-content: center; padding: 16px; }
+    .app-modal-backdrop.open { display: flex; }
+    .app-modal-window { width: min(440px, 100%); max-height: 90vh; border-radius: 28px; background: var(--ios-glass-strong); backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%); border: 1px solid var(--ios-highlight); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4); padding: 18px; color: var(--text-main); animation: fadeUpSmooth 0.22s ease; display:flex; flex-direction:column; gap:12px; }
+    .modal-top-bar { display: flex; align-items: center; justify-content: space-between; padding-bottom: 12px; border-bottom: 1px solid var(--ios-border); }
+    .modal-title { font-family: var(--font-cursive-straight); font-size: 1.25rem; }
+    .modal-actions { display: flex; gap: 8px; }
+    #appIframe { width: 100%; height: 480px; border: none; border-radius: 18px; background: transparent; }
+
+    /* BOTTOM NAVIGATION BAR */
+    .bottom-nav-wrap { position: fixed; bottom: 14px; left: 50%; transform: translate3d(-50%, 0, 0); z-index: 45; width: min(430px, calc(100vw - 26px)); }
+    .glass-nav-dock { display: grid; grid-template-columns: repeat(4, 1fr); align-items: center; height: 64px; padding: 5px; border-radius: 999px; background: var(--dock-bg); backdrop-filter: blur(16px) saturate(180%); -webkit-backdrop-filter: blur(16px) saturate(180%); border: 1px solid var(--ios-border); box-shadow: var(--ios-shadow); }
+    .nav-btn-3d { height: 100%; border: none; background: transparent; color: var(--text-muted); border-radius: 999px; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; padding: 4px 8px; font-family: var(--font-cursive-label); font-size: 0.82rem; font-weight: 600; transition: background-color 0.2s, color 0.2s, transform 0.16s; }
+    .nav-btn-3d:active { transform: scale(0.94); }
+    .nav-icon-wrap { width: 23px; height: 23px; display: grid; place-items: center; }
+    .nav-btn-3d.active { background: var(--dock-active); color: var(--text-main); border: 1px solid var(--ios-border); font-weight: 700; }
+    .nav-btn-3d.active .nav-icon-wrap { color: var(--accent-cyan); }
+    body.light-mode .nav-btn-3d.active .nav-icon-wrap { color: #0f172a; }
+    .android-apk-svg { width: 22px; height: 22px; display: block; }
+
+    /* Toast Notification */
+    .toast-ios { position: fixed; bottom: 90px; left: 50%; transform: translate3d(-50%, 20px, 0); padding: 9px 18px; border-radius: var(--pill-radius); background: var(--ios-glass-strong); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid var(--ios-border); box-shadow: var(--ios-shadow); font-family: var(--font-cursive-label); font-size: 0.84rem; color: var(--text-main); display: flex; align-items: center; gap: 8px; opacity: 0; pointer-events: none; z-index: 100; transition: transform 0.22s, opacity 0.2s; white-space: nowrap; }
+    .toast-ios.show { opacity: 1; transform: translate3d(-50%, 0, 0); }
+
+    .control-row { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
+    .control-label { display: flex; justify-content: space-between; font-size: 0.82rem; font-weight: 600; }
+    input[type="range"] { -webkit-appearance: none; width: 100%; height: 8px; border-radius: 999px; background: rgba(255, 255, 255, 0.18); outline: none; }
+    input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%; background: var(--accent-cyan); cursor: pointer; }
+  </style>
+</head>
+<body>
+
+  <!-- Drawer Backdrop -->
+  <div class="drawer-backdrop" id="drawerBackdrop" onclick="closeAllMenus()"></div>
+
+  <!-- Left Slide-Out Menu -->
+  <aside class="side-drawer" id="sideDrawer" aria-label="Navigation Drawer">
+    <div>
+      <div class="drawer-header">
+        <div class="drawer-user-mini">
+          <div class="mini-3d-badge">VR</div>
+          <div>
+            <div style="font-family: var(--font-cursive-straight); font-size: 1.12rem;">Vishal Rathaur</div>
+            <div style="font-family: var(--font-cursive-label); font-size: 0.76rem; color: var(--accent-cyan);">Techie Doctor</div>
+          </div>
+        </div>
+        <button class="drawer-close-btn" onclick="toggleDrawer()" aria-label="Close Menu">
+          <i data-lucide="x" style="width: 17px; height: 17px;"></i>
+        </button>
+      </div>
+      <div class="drawer-links">
+        <button class="drawer-item active-item" onclick="switchTab('home', true)">
+          <span class="drawer-icon-box"><i data-lucide="home" style="width: 17px; height: 17px;"></i></span>
+          <span>Home Hub</span>
+        </button>
+        <button class="drawer-item" onclick="switchTab('web', true)">
+          <span class="drawer-icon-box"><i data-lucide="globe" style="width: 17px; height: 17px;"></i></span>
+          <span>Web HTML Apps (4)</span>
+        </button>
+        <button class="drawer-item" onclick="switchTab('apps', true)">
+          <span class="drawer-icon-box" style="color: var(--accent-mint);">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 16V9a7 7 0 0 1 14 0v7"/><line x1="8" y1="2" x2="9.5" y2="4.5"/><line x1="16" y1="2" x2="14.5" y2="4.5"/><circle cx="9.5" cy="9" r="1" fill="currentColor"/><circle cx="14.5" cy="9" r="1" fill="currentColor"/><rect x="4" y="15" width="16" height="6" rx="2"/>
+            </svg>
+          </span>
+          <span>Android APKs</span>
+        </button>
+        <button class="drawer-item" onclick="switchTab('explore', true)">
+          <span class="drawer-icon-box"><i data-lucide="compass" style="width: 17px; height: 17px;"></i></span>
+          <span>Explore iOS Glass</span>
+        </button>
+        <button class="drawer-item" onclick="toggleTheme(); closeAllMenus();">
+          <span class="drawer-icon-box"><i data-lucide="sun-moon" style="width: 17px; height: 17px;"></i></span>
+          <span>Switch Light / Dark</span>
+        </button>
+      </div>
+    </div>
+    <div class="drawer-footer">
+      <div>Vishal Rathaur</div>
+      <div style="color: var(--accent-pink); font-weight: 700; margin-top: 2px;">Techie Doctor Studio</div>
+    </div>
+  </aside>
+
+  <!-- Right Hand Side Profile Popover -->
+  <div class="profile-popover" id="profilePopover" role="dialog" aria-label="Profile Card">
+    <div class="profile-pop-header">
+      <div class="avatar-ios-large">
+        <div class="avatar-ios-inner">
+          <i data-lucide="user-round-check" style="width: 30px; height: 30px; color: var(--accent-cyan);"></i>
+        </div>
+      </div>
+      <h3 style="font-family: var(--font-cursive-straight); font-size: 1.35rem; font-weight: 400; margin-top: 4px;">Vishal Rathaur</h3>
+      <div class="role-badge-ios">
+        <i data-lucide="stethoscope" style="width: 13px; height: 13px;"></i>
+        <span>Techie Doctor</span>
+      </div>
+      <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 2px;">
+        Android Architect • Kernel Builder • Web Crafter
+      </p>
+    </div>
+    <div class="profile-stats-row">
+      <div class="stat-mini-box"><div class="stat-mini-val">4 HTML</div><div class="stat-mini-lbl">Web Tools</div></div>
+      <div class="stat-mini-box"><div class="stat-mini-val">iOS UI</div><div class="stat-mini-lbl">Light Glass</div></div>
+      <div class="stat-mini-box"><div class="stat-mini-val" style="color: var(--accent-mint);">60 FPS</div><div class="stat-mini-lbl">Smooth</div></div>
+    </div>
+    <button class="theme-switch-btn" onclick="toggleTheme()">
+      <i data-lucide="sparkles" style="width: 15px; height: 15px;"></i>
+      <span>Switch Daylight / Dark iOS Glass</span>
+    </button>
+  </div>
+
+  <!-- Main Application Shell -->
+  <div class="app-shell">
+
+    <!-- TOP HEADER -->
+    <header class="top-header">
+      <button class="bento-menu-btn" id="bentoMenuBtn" onclick="toggleDrawer()" aria-label="Open Menu">
+        <div class="bento-grid-icon"><span class="bento-dot"></span><span class="bento-dot sparkle-dot"></span><span class="bento-dot cyan-dot"></span><span class="bento-dot"></span></div>
+      </button>
+      <div class="brand-center">
+        <div class="brand-name">Vishal Rathaur</div>
+        <div class="brand-subtitle"><span class="pulse-dot"></span><span>Techie Doctor</span></div>
+      </div>
+      <button class="profile-trigger-btn" id="profileBtn" onclick="toggleProfile()" aria-label="Open Profile">
+        <i data-lucide="user-round" style="width: 21px; height: 21px; color: var(--accent-cyan);"></i>
+        <span class="status-online-ring"></span>
+      </button>
+    </header>
+
+    <!-- HERO iOS LIGHT GLASS BANNER -->
+    <section class="hero-ios-card">
+      <div>
+        <div class="hero-tag-pill">
+          <i data-lucide="sparkles" style="width: 13px; height: 13px;"></i>
+          <span>FEATHERLIGHT iOS GLASS WORKSPACE</span>
+        </div>
+        <h1 class="hero-title">Hi, I'm <span class="cursive-inline">Vishal Rathaur</span></h1>
+        <p class="hero-desc">
+          Techie Doctor's ultra-smooth iOS glass portal. Launch or download standalone distinct HTML tools (IST Clock, Calculator, 2021–2030 Calendar & Notes) directly from the Web Tab!
+        </p>
+        <div class="hero-actions">
+          <button class="btn-ios btn-ios-primary" onclick="switchTab('web')"><i data-lucide="download" style="width: 16px; height: 16px;"></i><span>Get 4 Web .HTML Apps</span></button>
+          <button class="btn-ios btn-ios-glass" onclick="switchTab('apps')"><i data-lucide="smartphone" style="width: 16px; height: 16px; color: var(--accent-mint);"></i><span>Android APKs</span></button>
+        </div>
+      </div>
+      <div class="hero-badge-box" onclick="switchTab('web')" title="Open Web Apps">
+        <div class="hero-orb-icon"><i data-lucide="heart-pulse" style="width: 30px; height: 30px;"></i></div>
+        <span style="font-family: var(--font-cursive-label); font-size: 0.78rem; font-weight: 700;">Techie Doctor</span>
+      </div>
+    </section>
+
+    <!-- TAB 1: HOME VIEW -->
+    <main id="view-home" class="tab-section active-view">
+      <div class="section-header-row">
+        <h2 class="section-title"><i data-lucide="layout-grid" style="width: 20px; height: 20px; color: var(--accent-pink);"></i><span>Dashboard Overview</span></h2>
+        <span class="section-pill">iOS GLASS v15</span>
+      </div>
+      <div class="cards-grid">
+        <article class="card-ios" onclick="switchTab('web')" style="cursor: pointer;">
+          <div class="card-top-row"><div class="card-icon-ios grad-cyan"><i data-lucide="globe" style="width: 22px; height: 22px;"></i></div><span class="file-badge">4 HTML FILES</span></div>
+          <h3 class="card-title">Portable Web HTML Suite</h3>
+          <p class="card-text">Live IST (+5:30) Analog & Digital Clock, Simple Calculator, 2021–2030 Monthly Calendar, and Simple Notes with one-tap distinct file downloads.</p>
+          <div style="font-size: 0.78rem; font-weight: 700; color: var(--accent-cyan); display: flex; align-items: center; gap: 5px;"><span>OPEN WEB SUITE</span><i data-lucide="arrow-right" style="width: 15px; height: 15px;"></i></div>
+        </article>
+        <article class="card-ios" onclick="switchTab('apps')" style="cursor: pointer;">
+          <div class="card-top-row">
+            <div class="card-icon-ios grad-mint">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 16V9a7 7 0 0 1 14 0v7"/><line x1="8" y1="2" x2="9.5" y2="4.5"/><line x1="16" y1="2" x2="14.5" y2="4.5"/><circle cx="9.5" cy="9" r="1" fill="currentColor"/><circle cx="14.5" cy="9" r="1" fill="currentColor"/><rect x="4" y="15" width="16" height="6" rx="2"/></svg>
+            </div>
+            <span class="file-badge">ANDROID APK</span>
+          </div>
+          <h3 class="card-title">Android APKs & Kernel Lab</h3>
+          <p class="card-text">DivChat encrypted messenger APK, HyperOS & OneUI surgical debloater modules, and custom KernelSU builds.</p>
+          <div style="font-size: 0.78rem; font-weight: 700; color: var(--accent-mint); display: flex; align-items: center; gap: 5px;"><span>OPEN ANDROID LAB</span><i data-lucide="arrow-right" style="width: 15px; height: 15px;"></i></div>
+        </article>
+      </div>
+    </main>
+
+    <!-- TAB 2: WEB VIEW (DISTINCT HTML FILES) -->
+    <section id="view-web" class="tab-section">
+      <div class="section-header-row">
+        <h2 class="section-title"><i data-lucide="globe" style="width: 20px; height: 20px; color: var(--accent-cyan);"></i><span>Web .HTML Apps (Downloadable)</span></h2>
+        <span class="section-pill">web/filename.html</span>
+      </div>
+
+      <div class="web-apps-grid">
+        <!-- 1. CLOCK -->
+        <article class="card-ios">
+          <div>
+            <div class="card-top-row">
+              <div class="card-icon-ios grad-cyan"><i data-lucide="clock" style="width: 22px; height: 22px;"></i></div>
+              <span class="file-badge">web/vishal_clock_ist.html</span>
+            </div>
+            <h3 class="card-title">Live Clock (+5:30 IST)</h3>
+            <p class="card-text">Real-time Indian Standard Time synchronized Analog dial & Digital clock loaded from a distinct HTML file.</p>
+            <div class="mini-widget-preview">
+              <div class="mini-analog-face"><div class="mini-hand mini-hr" id="cardHrHand"></div><div class="mini-hand mini-min" id="cardMinHand"></div><div class="mini-hand mini-sec" id="cardSecHand"></div><div class="mini-center-dot"></div></div>
+              <div style="text-align: right;"><div id="cardDigitalTime" style="font-family: var(--font-heading); font-size: 1.15rem; font-weight: 700; color: var(--accent-cyan);">00:00:00</div><div id="cardDigitalDate" style="font-size: 0.72rem; color: var(--text-muted);">UTC +5:30 IST</div></div>
+            </div>
+          </div>
+          <div class="card-btn-group">
+            <button class="btn-card-action btn-open-app" onclick="openAppModal('vishal_clock_ist.html', 'Live Clock (+5:30 IST)')"><i data-lucide="play" style="width: 14px; height: 14px;"></i><span>Open Live</span></button>
+            <button class="btn-card-action btn-download-html" onclick="downloadFile('web/vishal_clock_ist.html', 'vishal_clock_ist.html')"><i data-lucide="download" style="width: 14px; height: 14px;"></i><span>Download .HTML</span></button>
+          </div>
+        </article>
+
+        <!-- 2. CALCULATOR -->
+        <article class="card-ios">
+          <div>
+            <div class="card-top-row">
+              <div class="card-icon-ios grad-pink"><i data-lucide="calculator" style="width: 22px; height: 22px;"></i></div>
+              <span class="file-badge">web/vishal_calculator.html</span>
+            </div>
+            <h3 class="card-title">Simple Calculator</h3>
+            <p class="card-text">Clean iOS glass calculator loaded straight from the /web subdirectory.</p>
+            <div class="mini-widget-preview">
+              <div style="font-size: 0.78rem; color: var(--text-muted);">Quick Preview</div>
+              <div style="font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; color: var(--accent-pink);">108 × 12 = 1,296</div>
+            </div>
+          </div>
+          <div class="card-btn-group">
+            <button class="btn-card-action btn-open-app" onclick="openAppModal('vishal_calculator.html', 'Simple Calculator')"><i data-lucide="play" style="width: 14px; height: 14px;"></i><span>Open Live</span></button>
+            <button class="btn-card-action btn-download-html" onclick="downloadFile('web/vishal_calculator.html', 'vishal_calculator.html')"><i data-lucide="download" style="width: 14px; height: 14px;"></i><span>Download .HTML</span></button>
+          </div>
+        </article>
+
+        <!-- 3. CALENDAR -->
+        <article class="card-ios">
+          <div>
+            <div class="card-top-row">
+              <div class="card-icon-ios grad-violet"><i data-lucide="calendar-days" style="width: 22px; height: 22px;"></i></div>
+              <span class="file-badge">web/vishal_calendar_2021_2030.html</span>
+            </div>
+            <h3 class="card-title">Calendar (2021 – 2030)</h3>
+            <p class="card-text">Complete 10-year standalone monthly calendar from Jan 2021 to Dec 2030.</p>
+            <div class="mini-widget-preview">
+              <div style="font-size: 0.78rem; color: var(--text-muted);">Range</div>
+              <div style="font-family: var(--font-heading); font-size: 0.95rem; font-weight: 700; color: var(--accent-violet);">Jan 2021 — Dec 2030</div>
+            </div>
+          </div>
+          <div class="card-btn-group">
+            <button class="btn-card-action btn-open-app" onclick="openAppModal('vishal_calendar_2021_2030.html', 'Calendar 2021-2030')"><i data-lucide="play" style="width: 14px; height: 14px;"></i><span>Open Live</span></button>
+            <button class="btn-card-action btn-download-html" onclick="downloadFile('web/vishal_calendar_2021_2030.html', 'vishal_calendar_2021_2030.html')"><i data-lucide="download" style="width: 14px; height: 14px;"></i><span>Download .HTML</span></button>
+          </div>
+        </article>
+
+        <!-- 4. NOTES -->
+        <article class="card-ios">
+          <div>
+            <div class="card-top-row">
+              <div class="card-icon-ios grad-mint"><i data-lucide="notebook-pen" style="width: 22px; height: 22px;"></i></div>
+              <span class="file-badge">web/vishal_notes.html</span>
+            </div>
+            <h3 class="card-title">Simple Notes</h3>
+            <p class="card-text">Standalone iOS glass notes app with auto-save mapped from a distinct HTML file.</p>
+            <div class="mini-widget-preview">
+              <div style="font-size: 0.78rem; color: var(--text-muted);">Status</div>
+              <div style="font-family: var(--font-heading); font-size: 0.95rem; font-weight: 700; color: var(--accent-mint);">Ready to Write</div>
+            </div>
+          </div>
+          <div class="card-btn-group">
+            <button class="btn-card-action btn-open-app" onclick="openAppModal('vishal_notes.html', 'Simple Notes')"><i data-lucide="play" style="width: 14px; height: 14px;"></i><span>Open Live</span></button>
+            <button class="btn-card-action btn-download-html" onclick="downloadFile('web/vishal_notes.html', 'vishal_notes.html')"><i data-lucide="download" style="width: 14px; height: 14px;"></i><span>Download .HTML</span></button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- TAB 3: APPS VIEW -->
+    <section id="view-apps" class="tab-section">
+      <div class="section-header-row">
+        <h2 class="section-title"><i data-lucide="smartphone" style="width: 20px; height: 20px; color: var(--accent-mint);"></i><span>Android APKs & System Modules</span></h2>
+        <span class="section-pill">ANDROID • APK</span>
+      </div>
+      <div class="cards-grid">
+        <article class="card-ios" onclick="showToast('DivChat Pro APK: Encrypted Engine Ready!')"><div class="card-top-row"><div class="card-icon-ios grad-violet"><i data-lucide="message-square-lock" style="width: 22px; height: 22px;"></i></div><span class="file-badge">KOTLIN • APK</span></div><h3 class="card-title">DivChat & VitChat Pro APK</h3><p class="card-text">Native Jetpack Compose & Kotlin messaging APK with SQLCipher local encryption, Cloudinary, and WebRTC calls.</p></article>
+        <article class="card-ios" onclick="showToast('Vishal Debloat System: HyperOS & OneUI Ready!')"><div class="card-top-row"><div class="card-icon-ios grad-pink"><i data-lucide="zap" style="width: 22px; height: 22px;"></i></div><span class="file-badge">KERNELSU • MAGISK</span></div><h3 class="card-title">HyperOS & OneUI Debloater</h3><p class="card-text">Open-source system surgical debloater modules removing bloatware safely while boosting battery & frame pacing.</p></article>
+      </div>
+    </section>
+
+    <!-- TAB 4: EXPLORE VIEW -->
+    <section id="view-explore" class="tab-section">
+      <div class="section-header-row"><h2 class="section-title"><i data-lucide="compass" style="width: 20px; height: 20px; color: var(--accent-mint);"></i><span>Explore iOS Glass Lab</span></h2><span class="section-pill">SMOOTH TUNER</span></div>
+      <div class="cards-grid">
+        <div class="card-ios">
+          <div class="card-top-row"><div class="card-icon-ios grad-cyan"><i data-lucide="sliders-horizontal" style="width: 22px; height: 22px;"></i></div><span class="file-badge">REALTIME</span></div>
+          <h3 class="card-title">iOS Glass Blur & Radius</h3>
+          <p class="card-text">Fine-tune the featherlight iOS frosted blur and corner roundness with zero lag.</p>
+          <div class="control-row"><div class="control-label"><span>iOS Frosted Blur</span><span id="blurValLabel">14px</span></div><input type="range" min="6" max="24" value="14" oninput="updateBlur(this.value)" /></div>
+          <div class="control-row"><div class="control-label"><span>Corner Roundness</span><span id="radiusValLabel">24px</span></div><input type="range" min="14" max="36" value="24" oninput="updateRadius(this.value)" /></div>
+        </div>
+        <div class="card-ios" onclick="toggleTheme()" style="cursor: pointer;">
+          <div class="card-top-row"><div class="card-icon-ios grad-pink"><i data-lucide="sun-moon" style="width: 22px; height: 22px;"></i></div><span class="file-badge">THEME SWITCH</span></div>
+          <h3 class="card-title">Daylight & Dark iOS Glass</h3>
+          <p class="card-text">Tap here to toggle between airy iOS Daylight white-pill glass and deep Cosmic Dark glass.</p>
+          <div style="font-size: 0.78rem; font-weight: 700; color: var(--accent-pink);">TAP TO SWITCH THEME →</div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- INTERACTIVE IFRAME MODAL TO LOAD STANDALONE HTML FILES -->
+  <div class="app-modal-backdrop" id="appModalBackdrop" onclick="if(event.target===this) closeAppModal()">
+    <div class="app-modal-window">
+      <div class="modal-top-bar">
+        <div class="modal-title" id="modalAppTitle">Live App</div>
+        <div class="modal-actions">
+          <button class="btn-card-action btn-download-html" id="modalDownloadBtn" style="padding: 6px 11px; font-size: 0.76rem;">
+            <i data-lucide="download" style="width: 13px; height: 13px;"></i><span>Get .HTML</span>
+          </button>
+          <button class="drawer-close-btn" onclick="closeAppModal()"><i data-lucide="x" style="width: 16px; height: 16px;"></i></button>
+        </div>
+      </div>
+      <!-- Natively embeds the distinct HTML files from the web/ subdirectory -->
+      <iframe id="appIframe" src="" title="Standalone Web App"></iframe>
+    </div>
+  </div>
+
+  <!-- BOTTOM NAVIGATION BAR -->
+  <nav class="bottom-nav-wrap" aria-label="Primary Bottom Navigation">
+    <div class="glass-nav-dock">
+      <button class="nav-btn-3d active" id="nav-home" onclick="switchTab('home')"><div class="nav-icon-wrap"><i data-lucide="home" style="width: 20px; height: 20px;"></i></div><span>Home</span></button>
+      <button class="nav-btn-3d" id="nav-web" onclick="switchTab('web')"><div class="nav-icon-wrap"><i data-lucide="globe" style="width: 20px; height: 20px;"></i></div><span>Web</span></button>
+      <button class="nav-btn-3d" id="nav-apps" onclick="switchTab('apps')">
+        <div class="nav-icon-wrap">
+          <svg class="android-apk-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 15V9.5a7 7 0 0 1 14 0V15"/><line x1="7.5" y1="2.5" x2="9.3" y2="5.2"/><line x1="16.5" y1="2.5" x2="14.7" y2="5.2"/><circle cx="9.5" cy="9.5" r="0.9" fill="currentColor"/><circle cx="14.5" cy="9.5" r="0.9" fill="currentColor"/><rect x="3.5" y="14.5" width="17" height="6.5" rx="2.2"/><text x="12" y="19.3" text-anchor="middle" font-family="Arial, sans-serif" font-weight="800" font-size="4.6" fill="currentColor" stroke="none">APK</text>
+          </svg>
+        </div>
+        <span>Apps</span>
+      </button>
+      <button class="nav-btn-3d" id="nav-explore" onclick="switchTab('explore')"><div class="nav-icon-wrap"><i data-lucide="compass" style="width: 20px; height: 20px;"></i></div><span>Explore</span></button>
+    </div>
+  </nav>
+
+  <!-- Toast Notification -->
+  <div class="toast-ios" id="toastIos"><i data-lucide="sparkles" style="width: 16px; height: 16px; color: var(--accent-cyan);"></i><span id="toastText">Ready!</span></div>
+
+  <script>
+    lucide.createIcons();
+
+    function switchTab(tabId, fromDrawer = false) {
+      const tabs = ['home', 'web', 'apps', 'explore'];
+      tabs.forEach(t => {
+        const viewEl = document.getElementById('view-' + t);
+        const navEl = document.getElementById('nav-' + t);
+        if (viewEl) viewEl.classList.toggle('active-view', t === tabId);
+        if (navEl) navEl.classList.toggle('active', t === tabId);
+      });
+      document.querySelectorAll('.drawer-links .drawer-item').forEach((btn, idx) => {
+        if (idx < 4) btn.classList.toggle('active-item', tabs[idx] === tabId);
+      });
+      if (fromDrawer) closeAllMenus();
+    }
+
+    function toggleDrawer() {
+      document.getElementById('profilePopover').classList.remove('open');
+      const isOpen = document.getElementById('sideDrawer').classList.toggle('open');
+      document.getElementById('bentoMenuBtn').classList.toggle('active', isOpen);
+      document.getElementById('drawerBackdrop').classList.toggle('show', isOpen);
+    }
+
+    function toggleProfile() {
+      document.getElementById('sideDrawer').classList.remove('open');
+      document.getElementById('bentoMenuBtn').classList.remove('active');
+      const isOpen = document.getElementById('profilePopover').classList.toggle('open');
+      document.getElementById('drawerBackdrop').classList.toggle('show', isOpen);
+    }
+
+    function closeAllMenus() {
+      document.getElementById('sideDrawer').classList.remove('open');
+      document.getElementById('profilePopover').classList.remove('open');
+      document.getElementById('drawerBackdrop').classList.remove('show');
+      document.getElementById('bentoMenuBtn').classList.remove('active');
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle('light-mode');
+      showToast(document.body.classList.contains('light-mode') ? 'iOS Daylight Glass Enabled' : 'iOS Dark Glass Enabled');
+    }
+
+    function updateBlur(val) { document.documentElement.style.setProperty('--ios-blur', val + 'px'); document.getElementById('blurValLabel').textContent = val + 'px'; }
+    function updateRadius(val) { document.documentElement.style.setProperty('--card-radius', val + 'px'); document.getElementById('radiusValLabel').textContent = val + 'px'; }
+
+    let toastTimer = null;
+    function showToast(msg) {
+      document.getElementById('toastText').textContent = msg;
+      document.getElementById('toastIos').classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => document.getElementById('toastIos').classList.remove('show'), 2100);
+    }
+
+    // Mini Live Preview Logic for Clock card only
+    function updateISTClocks() {
+      const utcMs = Date.now() + (new Date().getTimezoneOffset() * 60000);
+      const ist = new Date(utcMs + (5.5 * 3600000));
+      const hrs = ist.getHours(), mins = ist.getMinutes(), secs = ist.getSeconds();
+      const cHr = document.getElementById('cardHrHand'), cMin = document.getElementById('cardMinHand'), cSec = document.getElementById('cardSecHand');
+      if (cHr) {
+        cHr.style.transform = `translateX(-50%) rotate(${((hrs%12)*30)+(mins*0.5)}deg)`;
+        cMin.style.transform = `translateX(-50%) rotate(${(mins*6)+(secs*0.1)}deg)`;
+        cSec.style.transform = `translateX(-50%) rotate(${secs*6}deg)`;
+      }
+      const pad = n => String(n).padStart(2, '0');
+      const timeEl = document.getElementById('cardDigitalTime');
+      if (timeEl) timeEl.textContent = `${pad(hrs%12||12)}:${pad(mins)}:${pad(secs)} ${hrs>=12?'PM':'AM'}`;
+    }
+    setInterval(updateISTClocks, 1000); updateISTClocks();
+
+    // MODAL IFRAME HANDLER: Loads the distinct HTML files from web/ subdirectory
+    function openAppModal(filename, title) {
+      document.getElementById('modalAppTitle').textContent = title;
+      document.getElementById('appIframe').src = 'web/' + filename;
+      document.getElementById('modalDownloadBtn').onclick = () => downloadFile('web/' + filename, filename);
+      document.getElementById('appModalBackdrop').classList.add('open');
+    }
+
+    function closeAppModal() {
+      document.getElementById('appModalBackdrop').classList.remove('open');
+      setTimeout(() => document.getElementById('appIframe').src = '', 200); // clear after animation
+    }
+
+    // NATIVE FILE DOWNLOAD
+    function downloadFile(filepath, filename) {
+      const a = document.createElement('a');
+      a.href = filepath;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      showToast(`Downloading ${filename}...`);
+    }
+  </script>
+</body>
+</html>
